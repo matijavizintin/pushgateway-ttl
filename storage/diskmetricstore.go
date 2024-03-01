@@ -470,8 +470,8 @@ func (dms *DiskMetricStore) doCleanUpInReguarInterval(timeToLive time.Duration) 
 }
 
 func (dms *DiskMetricStore) cleanupStaleValues(timeToLive time.Duration) {
-	dms.lock.RLock()
-	defer dms.lock.RUnlock()
+	dms.lock.Lock()
+	defer dms.lock.Unlock()
 
 	cleanupCycleStartTime := time.Now()
 
